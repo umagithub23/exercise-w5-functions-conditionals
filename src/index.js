@@ -49,7 +49,7 @@ const userAgeCheck = () => {
   let userAge = prompt('How old are you?');
 
   if (userAge >= 1 && userAge <= 6) {
-    return alert("Aww, you're tiny! No driving — but you can definitely master a tricycle.");
+    alert("Aww, you're tiny! No driving — but you can definitely master a tricycle.");
   } else if (userAge >= 7 && userAge <= 12) {
     alert('Still too young to drive, but old enough to beat adults at video games.');
   } else if (userAge >= 13 && userAge <= 20) {
@@ -65,14 +65,13 @@ const userAgeCheck = () => {
   } else if (userAge > 65) {
     alert('65+! A legend on the road. Cruise control recommended.');
   } else {
-    alert('Invalid userAge. Are you a time traveler?');
+    alert('Hmm… that does not look like a real age. Please enter a valid number.');
   }
 };
 
 userAgeCheck();
 
-const calculationTest = () => {
-  /*
+/*
     5)
     In this function we want to give the user a mathematical calculation to 
     give us the answer to. Something like prompt('What is 5 + 6?')  
@@ -80,7 +79,52 @@ const calculationTest = () => {
     If not, give the user the correct answer so they can learn. 'Noooo, the answer is 11'
     You choose if to use addition, subtraction, multiplication or division. 
     */
+const calculationTest = () => {
+  const mathChoice = prompt(
+    'What mathematical operation would you like to practice?\n' +
+      '\n' +
+      '   We have the following options:\n' +
+      '     1. Addition\n' +
+      '     2. Subtraction\n' +
+      '     3. Multiplication\n' +
+      '     4. Division\n' +
+      '\n' +
+      'Please enter the number of your choice.',
+  );
+
+  let userAnswer;
+  let correctAnswer;
+
+  switch (parseInt(mathChoice)) {
+    case 1:
+      userAnswer = prompt('What is 5 + 6?');
+      correctAnswer = 5 + 6;
+      break;
+    case 2:
+      userAnswer = prompt('What is 10 - 4?');
+      correctAnswer = 10 - 4;
+      break;
+    case 3:
+      userAnswer = prompt('What is 7 * 3?');
+      correctAnswer = 7 * 3;
+      break;
+    case 4:
+      userAnswer = prompt('What is 20 / 5?');
+      correctAnswer = 20 / 5;
+      break;
+    default:
+      alert('Invalid choice. Please refresh the page and try again.');
+      return;
+  }
+
+  if (parseInt(userAnswer) === correctAnswer) {
+    alert('Yay! Correct');
+  } else {
+    alert(`Noooo, the answer is ${correctAnswer}`);
+  }
 };
+
+calculationTest();
 
 /*
   6) **BONUS**
