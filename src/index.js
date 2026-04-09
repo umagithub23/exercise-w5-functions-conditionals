@@ -72,13 +72,20 @@ const userAgeCheck = () => {
 userAgeCheck();
 
 /*
-    5)
-    In this function we want to give the user a mathematical calculation to 
-    give us the answer to. Something like prompt('What is 5 + 6?')  
-    If the answer is correct, congratulate the user. 'Yay! Correct'
-    If not, give the user the correct answer so they can learn. 'Noooo, the answer is 11'
-    You choose if to use addition, subtraction, multiplication or division. 
-    */
+  5)
+  In this function we want to give the user a mathematical calculation to 
+  give us the answer to. Something like prompt('What is 5 + 6?')  
+  If the answer is correct, congratulate the user. 'Yay! Correct'
+  If not, give the user the correct answer so they can learn. 'Noooo, the answer is 11'
+  You choose if to use addition, subtraction, multiplication or division. 
+  */
+
+/*
+  6) **BONUS**
+  Make the calculation machine we just made show random calculations everytime you invoke the function.
+  But hey, maybe limit the randomness to be numbers between 0-10?
+  */
+
 const calculationTest = () => {
   const mathChoice = prompt(
     'What mathematical operation would you like to practice?\n' +
@@ -94,24 +101,34 @@ const calculationTest = () => {
 
   let userAnswer;
   let correctAnswer;
+  // Generate two random numbers between 0–10
+  const number1 = Math.floor(Math.random() * 11);
+  const number2 = Math.floor(Math.random() * 11);
 
   switch (parseInt(mathChoice)) {
     case 1:
-      userAnswer = prompt('What is 5 + 6?');
-      correctAnswer = 5 + 6;
+      userAnswer = prompt(`What is ${number1} + ${number2}?`);
+      correctAnswer = number1 + number2;
       break;
     case 2:
-      userAnswer = prompt('What is 10 - 4?');
-      correctAnswer = 10 - 4;
+      userAnswer = prompt(`What is ${number1} - ${number2}?`);
+      correctAnswer = number1 - number2;
       break;
     case 3:
-      userAnswer = prompt('What is 7 * 3?');
-      correctAnswer = 7 * 3;
+      userAnswer = prompt(`What is ${number1} * ${number2}?`);
+      correctAnswer = number1 * number2;
       break;
     case 4:
-      userAnswer = prompt('What is 20 / 5?');
-      correctAnswer = 20 / 5;
+      // Avoid division by zero
+      if (number2 === 0) {
+        alert("Oops! Can't divide by zero this round. Try again.");
+        return;
+      }
+
+      userAnswer = prompt(`What is ${number1} / ${number2}?`);
+      correctAnswer = number1 / number2;
       break;
+
     default:
       alert('Invalid choice. Please refresh the page and try again.');
       return;
@@ -125,9 +142,3 @@ const calculationTest = () => {
 };
 
 calculationTest();
-
-/*
-  6) **BONUS**
-  Make the calculation machine we just made show random calculations everytime you invoke the function.
-  But hey, maybe limit the randomness to be numbers between 0-10?
-  */
